@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/07 17:57:59 by qurobert         ###   ########lyon.fr   */
+/*   Created: 2020/11/05 12:45:51 by qurobert          #+#    #+#             */
+/*   Updated: 2020/11/23 11:10:38 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-/*int		ft_printf(const char *format, ...)
+void		*ft_calloc(size_t count, size_t size)
 {
-	va_list ap;
-	va_start(ap, format);
+	void	*p;
 
-
-	va_end(ap);
-}*/
-
-#include <stdio.h>
-
-int		main(void)
-{
-	int n1;
-	//int n2;
-	printf("#######################\n");
-	n1 = printf("printf : %s\n", "ceci est un test");
-	printf("ret = %d\n", n1);
-	ft_putnbr_fd(42, 1);
-	return (0);
+	if (!(p = malloc(size * count)))
+		return (NULL);
+	ft_memset(p, 0, (count * size));
+	return (p);
 }

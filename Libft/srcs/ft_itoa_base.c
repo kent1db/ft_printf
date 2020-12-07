@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/07 17:57:59 by qurobert         ###   ########lyon.fr   */
+/*   Created: 2020/12/02 12:42:18 by qurobert          #+#    #+#             */
+/*   Updated: 2020/12/02 12:42:20 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-/*int		ft_printf(const char *format, ...)
+char			*ft_itoa_base(int nbr, char *base, char *buf)
 {
-	va_list ap;
-	va_start(ap, format);
+	int			base_l;
+	long int	n;
+	int			i;
 
-
-	va_end(ap);
-}*/
-
-#include <stdio.h>
-
-int		main(void)
-{
-	int n1;
-	//int n2;
-	printf("#######################\n");
-	n1 = printf("printf : %s\n", "ceci est un test");
-	printf("ret = %d\n", n1);
-	ft_putnbr_fd(42, 1);
-	return (0);
+	i = 0;
+	n = nbr;
+	if (!(ft_check_error(base)))
+		return (NULL);
+	base_l = ft_strlen(base);
+	if (n < 0)
+	{
+		buf[i++] = '-';
+		n = -n;
+	}
+	while (n >= base_l)
+	{
+		buf[i++] = base[n % base_l];
+		n = n / base_l;
+	}
+	buf[i++] = base[n % base_l];
+	buf[i] = '\0';
+	return (ft_reverse_string(buf));
 }

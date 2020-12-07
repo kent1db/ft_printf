@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/07 17:57:59 by qurobert         ###   ########lyon.fr   */
+/*   Created: 2020/11/03 16:57:25 by qurobert          #+#    #+#             */
+/*   Updated: 2020/11/23 13:41:32 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-/*int		ft_printf(const char *format, ...)
+int		ft_toupper(int c)
 {
-	va_list ap;
-	va_start(ap, format);
-
-
-	va_end(ap);
-}*/
-
-#include <stdio.h>
-
-int		main(void)
-{
-	int n1;
-	//int n2;
-	printf("#######################\n");
-	n1 = printf("printf : %s\n", "ceci est un test");
-	printf("ret = %d\n", n1);
-	ft_putnbr_fd(42, 1);
-	return (0);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
 }

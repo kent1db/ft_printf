@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/07 17:57:59 by qurobert         ###   ########lyon.fr   */
+/*   Created: 2020/11/03 20:11:26 by qurobert          #+#    #+#             */
+/*   Updated: 2020/11/23 11:11:20 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-/*int		ft_printf(const char *format, ...)
+size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	va_list ap;
-	va_start(ap, format);
+	size_t i;
+	size_t j;
+	size_t a;
 
-
-	va_end(ap);
-}*/
-
-#include <stdio.h>
-
-int		main(void)
-{
-	int n1;
-	//int n2;
-	printf("#######################\n");
-	n1 = printf("printf : %s\n", "ceci est un test");
-	printf("ret = %d\n", n1);
-	ft_putnbr_fd(42, 1);
-	return (0);
+	i = 0;
+	j = 0;
+	a = 0;
+	while (src[a] != '\0')
+		a++;
+	while (dst[i] != '\0' && (i < dstsize))
+		i++;
+	if (dstsize == 0)
+		return (i + a);
+	while (src[j] && (i + j + 1) < dstsize)
+	{
+		dst[i + j] = src[j];
+		j++;
+	}
+	if ((i + j) < dstsize)
+		dst[i + j] = '\0';
+	return (i + a);
 }

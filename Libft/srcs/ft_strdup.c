@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/07 17:57:59 by qurobert         ###   ########lyon.fr   */
+/*   Created: 2020/11/04 14:31:07 by qurobert          #+#    #+#             */
+/*   Updated: 2020/11/23 11:11:18 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-/*int		ft_printf(const char *format, ...)
+char	*ft_strdup(const char *s1)
 {
-	va_list ap;
-	va_start(ap, format);
+	int		i;
+	char	*cpy;
 
-
-	va_end(ap);
-}*/
-
-#include <stdio.h>
-
-int		main(void)
-{
-	int n1;
-	//int n2;
-	printf("#######################\n");
-	n1 = printf("printf : %s\n", "ceci est un test");
-	printf("ret = %d\n", n1);
-	ft_putnbr_fd(42, 1);
-	return (0);
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	if (!(cpy = malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		cpy[i] = s1[i];
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }

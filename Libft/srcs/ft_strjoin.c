@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/07 17:57:59 by qurobert         ###   ########lyon.fr   */
+/*   Created: 2020/11/05 13:50:30 by qurobert          #+#    #+#             */
+/*   Updated: 2020/11/23 11:11:19 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-/*int		ft_printf(const char *format, ...)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
-	va_list ap;
-	va_start(ap, format);
+	char	*str;
+	int		i;
+	int		c1;
+	int		c2;
 
-
-	va_end(ap);
-}*/
-
-#include <stdio.h>
-
-int		main(void)
-{
-	int n1;
-	//int n2;
-	printf("#######################\n");
-	n1 = printf("printf : %s\n", "ceci est un test");
-	printf("ret = %d\n", n1);
-	ft_putnbr_fd(42, 1);
-	return (0);
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	c1 = ft_strlen(s1);
+	c2 = ft_strlen(s2);
+	if (!(str = malloc(sizeof(char) * (c1 + c2 + 1))))
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	c2 = 0;
+	while (s2[c2] != '\0')
+		str[i++] = s2[c2++];
+	str[i] = '\0';
+	return (str);
 }

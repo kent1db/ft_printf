@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:53 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/07 15:58:21 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/07 17:59:22 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include "../Libft/includes/libft.h"
 
 #endif
