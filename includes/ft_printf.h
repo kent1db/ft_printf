@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:53 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/08 15:20:45 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 15:39:07 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include "struct.h"
 
 void	ft_check_format(char *format, va_list ap, int *ret);
-void	ft_parse_flags(char *format, va_list ap, int *i, t_list *arg);
+void	ft_parse_flags(char *format, int *i, t_flags *arg);
 
 #endif
