@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:27:25 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/08 15:22:03 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:57:41 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ typedef struct	s_flags
 	int			width;
 	int			prec;
 }				t_flags;
-
 
 #endif

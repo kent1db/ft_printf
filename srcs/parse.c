@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/08 16:29:47 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:57:23 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,18 @@ void	ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 	if (format[*i] == '.')
 	{
 		if (format[++(*i)] == '*')
-			arg->prec = va_arg(ap, int);
-		else if (format[*i] == '-')
 		{
-			(*i)++;
-			while (is_digit(format[(*i)]))
-				(*i)++;
-			arg->prec = 0;
+			arg->prec = va_arg(ap, int);
+			if (arg->prec < 0)
+				arg->prec = 0;
 		}
 		else if (format[*i] >= '1' && format[*i] <= '9')
 		{
 			while (format[*i] >= '1' && format[*i] <= '9')
 				arg->prec = arg->prec * 10 + format[(*i)++] - '0';
 		}
-		else if(!arg->prec)
-			arg->prec = 0;		
+		else
+			arg->prec = 0;
 	}
 }
 

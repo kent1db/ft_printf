@@ -2,6 +2,6 @@
 
 int	main()
 {
-	printf("%.*d\n", 5, 42);
+	printf("%.d\n", -6, 42);
 	return (0);
 }
