@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/08 17:36:31 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 18:05:03 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int		ft_printf(const char *format, ...)
 int		main(void)
 {
 	dprintf(1, "############printf###########\n");
-	printf("[%10.5d]\n", 42);
+	dprintf(1, "[%10.*d]\n", -10, 42);
 	dprintf(1, "############parse############\n");
-	ft_printf("Bonjour %-40.20d\n");
+	ft_printf("Bonjour %10.*d\n", -10);
 	return (0);
 }

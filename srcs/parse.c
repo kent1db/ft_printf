@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/08 17:45:24 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 18:02:27 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,21 @@ int		ft_get_percent(char *format, int *index)
 
 void	ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 {
+	dprintf(1, "format = %c\n", format[*i]);
 	if (format[*i] == '.')
 	{
+		dprintf(1, "test\n");
 		if (format[++(*i)] == '*')
 		{
 			arg->prec = va_arg(ap, int);
 			if (arg->prec < 0)
 				arg->prec = 0;
 		}
-		else if (format[*i] >= '1' && format[*i] <= '9')
+		else if (format[*i] >= '0' && format[*i] <= '9')
 		{
-			while (format[*i] >= '1' && format[*i] <= '9')
-				arg->prec = arg->prec * 10 + format[(*i)++] - '0';
+			arg->prec = ft_atoi(format + (*i));
+			while (format[*i] >= '0' && format[*i] <= '9')
+				(*i)++;
 		}
 		else
 			arg->prec = 0;
@@ -48,7 +51,6 @@ void	ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
 {
 	if (format[*i] == '*')
 	{
-		dprintf(1, "test\n");
 		arg->width = va_arg(ap, int);
 		if (arg->width < 0)
 		{
@@ -59,12 +61,9 @@ void	ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
 	}
 	else if (format[*i] >= '1' && format[*i] <= '9')
 	{
+		arg->width = ft_atoi(format + (*i));
 		while (format[*i] >= '0' && format[*i] <= '9')
-		{
-			arg->width = arg->width * 10 + format[(*i)] - '0';
-			dprintf(1, "format = %c\n", format[(*i)]);
 			(*i)++;
-		}
 	}
 	else
 		arg->width = 0;
