@@ -6,7 +6,7 @@
 #    By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/19 18:04:39 by qurobert          #+#    #+#              #
-#    Updated: 2020/12/07 17:50:13 by qurobert         ###   ########lyon.fr    #
+#    Updated: 2020/12/08 11:13:52 by qurobert         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ $(NAME): 	$(OBJ)
 			@printf '\033[32m %s\n\033[0m'
 			
 
-%.o: %.c $(INC_PATH)libft.h
+%.o: %.c 	$(INC_PATH)libft.h
 			@${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I ${INC_PATH}
 			@printf '\033[32m [✓] %s\n\033[0m'  "$(notdir $<)"
 			

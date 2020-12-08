@@ -6,25 +6,30 @@
 #    By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/07 15:50:54 by qurobert          #+#    #+#              #
-#    Updated: 2020/12/07 17:51:45 by qurobert         ###   ########lyon.fr    #
+#    Updated: 2020/12/08 12:04:07 by qurobert         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = 		libftprintf.a
-FILES =		ft_printf.c
+FILES =		ft_printf.c parse.c
 INC_PATH = ./includes/
-INC_FILES = ft_printf.h
+INC_FILES = ft_printf.h struct.h
 SRC_PATH = ./srcs/
 SRC = 		$(addprefix ${SRC_PATH},${FILES})
 CC = 		gcc
 OBJ = 		${SRC:.c=.o}
 FLAGS = 	-Wall -Wextra -Werror
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libftprintf.a printf
 
 all: 		$(NAME)
 			@cd ./Libft/ && make
+		
+printf: 	
+			@rm -f ${OBJ}
+			@rm -f ${NAME}
+			$(NAME)
 
 $(NAME): 	$(OBJ)
 			@ar rcs $(NAME) $(OBJ)
