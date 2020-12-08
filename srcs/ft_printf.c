@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/08 13:29:22 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 17:36:31 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,9 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	int n1;
-	int n2;
-	dprintf(1, "#######################\nprintf :");
-	n1 = printf("\nBonjour %25% je suis quentin\n");
-	printf("ret = %d\n", n1);
-	dprintf(1, "#######################\nft_printf :");
-	n2 = ft_printf("\nBonjour %%%%d je suis quentin\n");
-	printf("ret = %d\n", n2);
+	dprintf(1, "############printf###########\n");
+	printf("[%10.5d]\n", 42);
+	dprintf(1, "############parse############\n");
+	ft_printf("Bonjour %-40.20d\n");
 	return (0);
 }
