@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/08 16:08:39 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 16:29:47 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,20 @@ void	ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 	{
 		if (format[++(*i)] == '*')
 			arg->prec = va_arg(ap, int);
-		while (format[*i] >= '1' && format[*i] <= '9')
-			arg->prec = arg->prec * 10 + format[(*i)++] - '0';
-		if (arg->prec < 0)
+		else if (format[*i] == '-')
 		{
+			(*i)++;
+			while (is_digit(format[(*i)]))
+				(*i)++;
 			arg->prec = 0;
-			i++;
 		}
+		else if (format[*i] >= '1' && format[*i] <= '9')
+		{
+			while (format[*i] >= '1' && format[*i] <= '9')
+				arg->prec = arg->prec * 10 + format[(*i)++] - '0';
+		}
+		else if(!arg->prec)
+			arg->prec = 0;		
 	}
 }
 
@@ -49,12 +56,15 @@ void	ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
 			arg->minus = 1;
 			arg->width = -(arg->width);
 		}
+		(*i)++;
 	}
-	else
+	else if (format[*i] >= '1' && format[*i] <= '9')
 	{
 		while (format[*i] >= '1' && format[*i] <= '9')
 			arg->width = arg->width * 10 + format[(*i)++] - '0';
 	}
+	else
+		arg->width = 0;
 }
 
 void	ft_parse_flags(char *format, int *i, t_flags *arg)
