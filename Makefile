@@ -6,13 +6,13 @@
 #    By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/07 15:50:54 by qurobert          #+#    #+#              #
-#    Updated: 2020/12/08 12:04:07 by qurobert         ###   ########lyon.fr    #
+#    Updated: 2020/12/09 17:17:09 by qurobert         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = 		libftprintf.a
-FILES =		ft_printf.c parse.c
+FILES =		ft_printf.c parse.c utils.c
 INC_PATH = ./includes/
 INC_FILES = ft_printf.h struct.h
 SRC_PATH = ./srcs/
@@ -20,18 +20,15 @@ SRC = 		$(addprefix ${SRC_PATH},${FILES})
 CC = 		gcc
 OBJ = 		${SRC:.c=.o}
 FLAGS = 	-Wall -Wextra -Werror
+LIB =		make -C ./Libft
 
-.PHONY: all clean fclean re libftprintf.a printf
+.PHONY: all clean fclean re libftprintf.a printf lib
 
 all: 		$(NAME)
-			@cd ./Libft/ && make
-		
-printf: 	
-			@rm -f ${OBJ}
-			@rm -f ${NAME}
-			$(NAME)
 
 $(NAME): 	$(OBJ)
+			@make -C Libft
+			@cp ./Libft/libft.a $(NAME)
 			@ar rcs $(NAME) $(OBJ)
 			@printf '\033[32m %s\n\033[0m'
 			@printf '\033[32m %s\n\033[0m'
@@ -62,7 +59,7 @@ $(NAME): 	$(OBJ)
 			
 clean:		
 			@rm -f ${OBJ}
-			@cd ./Libft/ && make clean
+			@make clean -C Libft
 			@printf '\033[32m %s\n\033[0m'
 			@printf '\033[33m⣿⣿⣿⣿⣿⡏⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿ %s\n\033[0m' 
 			@printf '\033[33m⣿⣿⣿⣿⣿⣿⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠁⠀⣿ %s\n\033[0m' 
