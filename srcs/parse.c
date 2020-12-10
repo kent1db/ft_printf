@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 16:35:30 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 17:33:17 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 			arg->prec = va_arg(ap, int);
 			if (arg->prec < 0)
 				arg->prec = 0;
+			(*i)++;
 		}
 		else if (format[*i] >= '0' && format[*i] <= '9')
 		{
@@ -30,10 +31,13 @@ void		ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 				(*i)++;
 		}
 		else
-			arg->prec = 0;
+		{
+			arg->prec = -1;
+			(*i)++;
+		}
 	}
 	else
-		arg->prec = -1;
+		arg->prec = 0;
 }
 
 void		ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)

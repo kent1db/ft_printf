@@ -6,19 +6,23 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 11:04:04 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 16:49:44 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 17:47:59 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-/*static void		ft_puts_minus(int *ret, char *str, t_flags *arg)
+static void		ft_puts_minus(int *ret, char *str, t_flags *arg)
 {
 	int		i;
 
 	i = 0;
-	while ((i < (arg->prec)) && str[i])
+	if (arg->prec != -1)
+	{
+		
+	}
+	/*while ((i < (arg->prec)) && str[i])
 	{
 		ft_putchar_fd(str[i++], 1);
 		(*ret)++;
@@ -27,8 +31,8 @@
 	{
 		ft_putchar_fd(' ', 1);
 		(*ret)++;
-	}
-}*/
+	}*/
+}
 
 static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 {
@@ -36,7 +40,7 @@ static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 	int 	i;
 
 	i = 0;
-	if ((arg->prec) != -1 && (arg->prec) < len)
+	/*if ((arg->prec) != -1 && (arg->prec) < len)
 		count = (arg->width) - (arg->prec);
 	else
 		count = (arg->width) - len;
@@ -55,7 +59,7 @@ static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 		}
 	}
 	else
-		ft_putstr_fd(str, 1);		
+		ft_putstr_fd(str, 1);*/	
 }
 
 void	ft_print_string(va_list ap, int *ret, t_flags *arg)
@@ -65,8 +69,8 @@ void	ft_print_string(va_list ap, int *ret, t_flags *arg)
 	
 	str = va_arg(ap, char *);
 	len = ft_strlen(str);
-	/*if (arg->minus || arg->width <= len)
-		ft_puts_minus(ret, str, arg);*/
-	/*else*/
+	if (arg->minus || (arg->width <= len && arg->prec != -1))
+		ft_puts_minus(ret, str, arg);
+	else
 		ft_puts_none(ret, str, arg, len);
 }

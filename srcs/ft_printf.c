@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 16:30:54 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 17:13:14 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,10 @@ int			main(void)
 	/*					TEST STRING					*/
 	dprintf(1, "############printf###########\n");
 	/*dprintf(1, "minus [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");*/
-	/*ret_p = dprintf(1, "none  [%*s]%20.10s%20.s][%*s]\n",10, "hello", "hello", "hello", 10, "hello");*/
-	ret_p = dprintf(1, "[%*s]\n", 10, "hello");
+	ret_p = dprintf(1, "[%*s]%20.10stesttest %s\n",10, "hello", "hello", "quentin");
 	dprintf(1, "##########ft_printf##########\n");
 	/*ft_printf("minus [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");*/
-	ret_ft = ft_printf("[%*s]\n", 10, "hello");
+	ret_ft = ft_printf("%*s%20.10stesttest %s\n",10, "hello", "hello", "quentin");
 	
 	dprintf(1, "#############ret#############\n");
 	dprintf(1, "ret_printf    = %d\n", ret_p);
