@@ -6,14 +6,14 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/09 17:57:29 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 10:26:25 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-static void		print_struct(t_flags *arg)
+/*static void		print_struct(t_flags *arg)
 {
 	dprintf(1, "\n############struct###########\n");
 	dprintf(1, "zero = %d\n", arg->zero);
@@ -23,7 +23,7 @@ static void		print_struct(t_flags *arg)
 	dprintf(1, "start = %d\n", arg->start);
 	dprintf(1, "end = %d\n", arg->end);
 	dprintf(1, "#############################\n");
-}
+}*/
 
 void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 {
@@ -35,10 +35,9 @@ void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 		if (format[i] == '%')
 		{
 			ft_parse_format(format, ap, arg, &i);
-			print_struct(arg);
-			/*if (format[i] == 'c')
-				ft_print_char(ap, ret, arg);
-			else if (format[i] == 's')
+			if (format[i] == 'c')
+				ft_print_char(ap, ret, arg, &i);
+			/*else if (format[i] == 's')
 				ft_print_string(ap, ret, arg);
 			else if (format[i] == 'p')
 				ft_print_adress(ap, ret, arg);
@@ -79,8 +78,12 @@ int			ft_printf(const char *format, ...)
 int			main(void)
 {
 	dprintf(1, "############printf###########\n");
-	dprintf(1, "Hello bonjour%.5dbonjour%*.2dtest tab = \t\n", 42, 10, 202);
-	dprintf(1, "############parse############\n");
-	ft_printf("Hello bonjour%.5dbonjour%*.2dtest tab = \t\n", 42, 10, 202);
+	//dprintf(1, "Hello bonjour%.5dbonjour%*.2dtest tab = \t\n", 42, 10, 202);
+	dprintf(1, "minus [%-20c]\n", 'a');
+	dprintf(1, "none  [%20c]\n", 'a');
+	dprintf(1, "##########ft_printf##########\n");
+	//ft_printf("Hello bonjour%.5dbonjour%*.2dtest tab = \t\n", 42, 10, 202);
+	ft_printf("minus [%-20c]\n", 'a');
+	ft_printf("none  [%20c]\n", 'a');
 	return (0);
 }

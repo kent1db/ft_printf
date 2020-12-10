@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/09 17:33:20 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 10:25:36 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,15 @@ void		ft_parse_flags(char *format, int *i, t_flags *arg)
 		arg->zero = 1;
 		(*i)++;
 	}
+	else
+		arg->zero = 0;
 	if (format[*i] == '-')
 	{
 		arg->minus = 1;
 		(*i)++;
 	}
+	else
+		arg->minus = 0;
 }
 
 void		ft_parse_format(char *format, va_list ap, t_flags *arg, int *index)
