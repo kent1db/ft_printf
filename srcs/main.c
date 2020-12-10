@@ -17,4 +17,5 @@ int		main()
 	ret2 = printf("none   [%10.20s]\n", "Hello");
 	printf("ret1 = %d\nret2 = %d\n", ret1, ret2);
 	return (0);
+	                   hello
 }

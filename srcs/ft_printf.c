@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 14:18:20 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 16:30:54 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 				ft_print_hexa(ap, ret, arg);
 			else if (format[i] == '%')
 				ft_print_percent(ap, ret, arg);*/
-			i++;
 		}
-		write(1, &(format[i]), 1);
-		(*ret)++;
+		else
+		{
+			write(1, &(format[i]), 1);
+			(*ret)++;
+		}
 	}
 }
 
@@ -85,19 +87,20 @@ int			main(void)
 	
 	/*				 TEST CHARACTERE 				*/
 	/*dprintf(1, "############printf###########\n");
-	dprintf(1, "minus [%-20c][%-20c][%-20c]\n", 'a', 'b', 'c');
+	dprintf(1, "minus [%-20c%-20c%-20c]\n", 'a', 'b', 'c');
 	ret_p =dprintf(1, "none  [%20c][%20c][%20c]\n", 'a', 'b', 'c');
 	dprintf(1, "##########ft_printf##########\n");
-	ft_printf("minus [%-20c][%-20c][%-20c]\n", 'a', 'b', 'c');
+	ft_printf("minus [%-20c%-20c%-20c]\n", 'a', 'b', 'c');
 	ret_ft = ft_printf("none  [%20c][%20c][%20c]\n", 'a', 'b', 'c');*/
 	
 	/*					TEST STRING					*/
 	dprintf(1, "############printf###########\n");
-	dprintf(1, "minus         [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");
-	ret_p = dprintf(1, "none  [%20.10s] [%20.s] [%20.*s]\n", "hello", "hello", -10, "hello");
+	/*dprintf(1, "minus [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");*/
+	/*ret_p = dprintf(1, "none  [%*s]%20.10s%20.s][%*s]\n",10, "hello", "hello", "hello", 10, "hello");*/
+	ret_p = dprintf(1, "[%*s]\n", 10, "hello");
 	dprintf(1, "##########ft_printf##########\n");
-	ft_printf("minus         [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");
-	ret_ft = ft_printf("none [%20.10s] [%20.s] [%20.*s]\n", "hello", "hello", -10, "hello");
+	/*ft_printf("minus [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");*/
+	ret_ft = ft_printf("[%*s]\n", 10, "hello");
 	
 	dprintf(1, "#############ret#############\n");
 	dprintf(1, "ret_printf    = %d\n", ret_p);

@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 10:48:35 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 16:35:30 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 			arg->prec = 0;
 	}
 	else
-		arg->prec = 0;
+		arg->prec = -1;
 }
 
 void		ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
