@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 17:15:56 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 10:22:48 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 10:55:50 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_putc_none(int *ret, t_flags *arg, char c)
 	(*ret)++;
 }
 
-void		ft_print_char(va_list ap, int *ret, t_flags *arg, int *i)
+void		ft_print_char(va_list ap, int *ret, t_flags *arg)
 {
 	char	c;
 
@@ -51,5 +51,4 @@ void		ft_print_char(va_list ap, int *ret, t_flags *arg, int *i)
 		ft_putc_minus(ret, arg, c);
 	else
 		ft_putc_none(ret, arg, c);
-	(*i)++;
 }

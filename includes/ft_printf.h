@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:53 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 10:21:10 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 14:18:53 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_parse_width(char *format, va_list ap, int *i, t_flags *arg);
 void	ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg);
 
 void	ft_print(char *format, va_list ap, int *ret, t_flags *arg);
-void	ft_print_char(va_list ap, int *ret, t_flags *arg, int *i);
+
 void	ft_print_string(va_list ap, int *ret, t_flags *arg);
 void	ft_print_adress(va_list ap, int *ret, t_flags *arg);
 void	ft_print_int(va_list ap, int *ret, t_flags *arg);
@@ -36,9 +36,12 @@ void	ft_print_unsigned(va_list ap, int *ret, t_flags *arg);
 void	ft_print_hexa(va_list ap, int *ret, t_flags *arg);
 void	ft_print_percent(va_list ap, int *ret, t_flags *arg);
 
-int		ft_get_percent(char *format);
+void	ft_print_char(va_list ap, int *ret, t_flags *arg);
+void	ft_putc_none(int *ret, t_flags *arg, char c);
+void	ft_putc_minus(int *ret, t_flags *arg, char c);
 
-void		ft_putc_none(int *ret, t_flags *arg, char c);
-void		ft_putc_minus(int *ret, t_flags *arg, char c);
+void	ft_print_string(va_list ap, int *ret, t_flags *arg);
+
+int		ft_get_percent(char *format);
 
 #endif

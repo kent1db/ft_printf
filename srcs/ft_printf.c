@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 10:26:25 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 14:18:20 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 		{
 			ft_parse_format(format, ap, arg, &i);
 			if (format[i] == 'c')
-				ft_print_char(ap, ret, arg, &i);
-			/*else if (format[i] == 's')
+				ft_print_char(ap, ret, arg);
+			else if (format[i] == 's')
 				ft_print_string(ap, ret, arg);
-			else if (format[i] == 'p')
+			/*else if (format[i] == 'p')
 				ft_print_adress(ap, ret, arg);
 			else if (format[i] == 'd' || format[i] == 'i')
 				ft_print_int(ap, ret, arg);
@@ -77,13 +77,31 @@ int			ft_printf(const char *format, ...)
 
 int			main(void)
 {
-	dprintf(1, "############printf###########\n");
-	//dprintf(1, "Hello bonjour%.5dbonjour%*.2dtest tab = \t\n", 42, 10, 202);
-	dprintf(1, "minus [%-20c]\n", 'a');
-	dprintf(1, "none  [%20c]\n", 'a');
+	int ret_p;
+	int ret_ft;
+
+	ret_ft = 0;
+	ret_p = 0;
+	
+	/*				 TEST CHARACTERE 				*/
+	/*dprintf(1, "############printf###########\n");
+	dprintf(1, "minus [%-20c][%-20c][%-20c]\n", 'a', 'b', 'c');
+	ret_p =dprintf(1, "none  [%20c][%20c][%20c]\n", 'a', 'b', 'c');
 	dprintf(1, "##########ft_printf##########\n");
-	//ft_printf("Hello bonjour%.5dbonjour%*.2dtest tab = \t\n", 42, 10, 202);
-	ft_printf("minus [%-20c]\n", 'a');
-	ft_printf("none  [%20c]\n", 'a');
+	ft_printf("minus [%-20c][%-20c][%-20c]\n", 'a', 'b', 'c');
+	ret_ft = ft_printf("none  [%20c][%20c][%20c]\n", 'a', 'b', 'c');*/
+	
+	/*					TEST STRING					*/
+	dprintf(1, "############printf###########\n");
+	dprintf(1, "minus         [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");
+	ret_p = dprintf(1, "none  [%20.10s] [%20.s] [%20.*s]\n", "hello", "hello", -10, "hello");
+	dprintf(1, "##########ft_printf##########\n");
+	ft_printf("minus         [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");
+	ret_ft = ft_printf("none [%20.10s] [%20.s] [%20.*s]\n", "hello", "hello", -10, "hello");
+	
+	dprintf(1, "#############ret#############\n");
+	dprintf(1, "ret_printf    = %d\n", ret_p);
+	dprintf(1, "ret_ft_printf = %d\n", ret_ft);
+	
 	return (0);
 }
