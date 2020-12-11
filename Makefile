@@ -6,13 +6,13 @@
 #    By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/07 15:50:54 by qurobert          #+#    #+#              #
-#    Updated: 2020/12/10 14:20:11 by qurobert         ###   ########lyon.fr    #
+#    Updated: 2020/12/11 15:48:30 by qurobert         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = 		libftprintf.a
-FILES =		ft_printf.c parse.c utils.c char.c string.c
+FILES =		ft_printf.c parse.c utils.c char.c string.c adress.c int.c
 INC_PATH = ./includes/
 INC_FILES = ft_printf.h struct.h
 SRC_PATH = ./srcs/

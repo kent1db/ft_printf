@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 17:33:17 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 11:26:35 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ void		ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 				(*i)++;
 		}
 		else
-		{
 			arg->prec = -1;
-			(*i)++;
-		}
 	}
 	else
 		arg->prec = 0;

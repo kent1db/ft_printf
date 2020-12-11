@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:53 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 14:19:38 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 17:58:09 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void	ft_print_char(va_list ap, int *ret, t_flags *arg);
 void	ft_putc_none(int *ret, t_flags *arg, char c);
 void	ft_putc_minus(int *ret, t_flags *arg, char c);
 
-void	ft_print_string(va_list ap, int *ret, t_flags *arg);
-
 int		ft_get_percent(char *format);
+int		ft_puts(char *str);
+int		ft_putc(char c, int nb);
+int		ft_count_int(int nb);
+int		ft_putnb_pos(int nb);
 
 #endif

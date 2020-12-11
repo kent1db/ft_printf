@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 17:13:14 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 18:19:26 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 				ft_print_char(ap, ret, arg);
 			else if (format[i] == 's')
 				ft_print_string(ap, ret, arg);
-			/*else if (format[i] == 'p')
+			else if (format[i] == 'p')
 				ft_print_adress(ap, ret, arg);
 			else if (format[i] == 'd' || format[i] == 'i')
 				ft_print_int(ap, ret, arg);
-			else if (format[i] == 'u')
+			/*else if (format[i] == 'u')
 				ft_print_unsigned(ap, ret, arg);
 			else if (format[i] == 'x' || format[i] == 'X')
 				ft_print_hexa(ap, ret, arg);
@@ -81,7 +81,9 @@ int			main(void)
 {
 	int ret_p;
 	int ret_ft;
+	char	*str;
 
+	str = "quentin";
 	ret_ft = 0;
 	ret_p = 0;
 	
@@ -94,16 +96,30 @@ int			main(void)
 	ret_ft = ft_printf("none  [%20c][%20c][%20c]\n", 'a', 'b', 'c');*/
 	
 	/*					TEST STRING					*/
-	dprintf(1, "############printf###########\n");
-	/*dprintf(1, "minus [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");*/
-	ret_p = dprintf(1, "[%*s]%20.10stesttest %s\n",10, "hello", "hello", "quentin");
+	/*dprintf(1, "############printf###########\n");
+	dprintf(1, "minus [%-2.10s][%-2.s][%-20.*s][%-20.2s]\n", "hello", "hello", -10, "hello", "hello");
+	ret_p = dprintf(1, "[%*s]%20.10stesttest %s\n", 10, "hello", "hello", "quentin");
 	dprintf(1, "##########ft_printf##########\n");
-	/*ft_printf("minus [%-20.10s][%-20.s][%-20.*s]\n", "hello", "hello", -10, "hello");*/
-	ret_ft = ft_printf("%*s%20.10stesttest %s\n",10, "hello", "hello", "quentin");
+	ft_printf("minus [%-2.10s][%-2.s][%-20.*s][%-20.2s]\n", "hello", "hello", -10, "hello", "hello");
+	ret_ft = ft_printf("[%*s]%20.10stesttest %s\n", 10, "hello", "hello", "quentin");
+	ft_printf("%.s", 42);*/
+	
+	/*					TEST ADRESS					*/
+	/*dprintf(1, "############printf###########\n");
+	ret_p = dprintf(1, "[%15p]\n",  str);
+	dprintf(1, "##########ft_printf##########\n");
+	ret_ft = ft_printf("[%15p]\n", str);*/
+
+	/*					TEST INT					*/
+	dprintf(1, "############printf###########\n");
+	ret_p = dprintf(1, "none [%5.6d]\n",  -42);
+	dprintf(1, "##########ft_printf##########\n");
+	ret_ft = ft_printf("none [%5.6d]\n", -42);
 	
 	dprintf(1, "#############ret#############\n");
 	dprintf(1, "ret_printf    = %d\n", ret_p);
 	dprintf(1, "ret_ft_printf = %d\n", ret_ft);
 	
+
 	return (0);
 }
