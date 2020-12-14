@@ -6,20 +6,21 @@
 #    By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/07 15:50:54 by qurobert          #+#    #+#              #
-#    Updated: 2020/12/11 15:48:30 by qurobert         ###   ########lyon.fr    #
+#    Updated: 2020/12/14 17:24:49 by qurobert         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = 		libftprintf.a
-FILES =		ft_printf.c parse.c utils.c char.c string.c adress.c int.c
+FILES =		ft_printf.c parse.c utils.c char.c string.c adress.c int.c\
+			unsigned.c hexa.c convert.c percent.c
 INC_PATH = ./includes/
 INC_FILES = ft_printf.h struct.h
 SRC_PATH = ./srcs/
 SRC = 		$(addprefix ${SRC_PATH},${FILES})
 CC = 		gcc
 OBJ = 		${SRC:.c=.o}
-FLAGS = 	-Wall -Wextra -Werror
+FLAGS = 	#-Wall -Wextra -Werror
 LIB =		make -C ./Libft
 
 .PHONY: all clean fclean re libftprintf.a printf lib

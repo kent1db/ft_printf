@@ -6,12 +6,13 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/11 18:19:26 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 18:08:39 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 /*static void		print_struct(t_flags *arg)
 {
@@ -43,12 +44,12 @@ void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 				ft_print_adress(ap, ret, arg);
 			else if (format[i] == 'd' || format[i] == 'i')
 				ft_print_int(ap, ret, arg);
-			/*else if (format[i] == 'u')
+			else if (format[i] == 'u')
 				ft_print_unsigned(ap, ret, arg);
 			else if (format[i] == 'x' || format[i] == 'X')
-				ft_print_hexa(ap, ret, arg);
+				ft_print_hexa(ap, ret, arg, format[i]);
 			else if (format[i] == '%')
-				ft_print_percent(ap, ret, arg);*/
+				ft_print_percent(ret, arg);
 		}
 		else
 		{
@@ -77,7 +78,7 @@ int			ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int			main(void)
+/*int			main(void)
 {
 	int ret_p;
 	int ret_ft;
@@ -85,7 +86,7 @@ int			main(void)
 
 	str = "quentin";
 	ret_ft = 0;
-	ret_p = 0;
+	ret_p = 0;*/
 	
 	/*				 TEST CHARACTERE 				*/
 	/*dprintf(1, "############printf###########\n");
@@ -97,29 +98,32 @@ int			main(void)
 	
 	/*					TEST STRING					*/
 	/*dprintf(1, "############printf###########\n");
-	dprintf(1, "minus [%-2.10s][%-2.s][%-20.*s][%-20.2s]\n", "hello", "hello", -10, "hello", "hello");
-	ret_p = dprintf(1, "[%*s]%20.10stesttest %s\n", 10, "hello", "hello", "quentin");
+	//dprintf(1," %*.0s %.2s ", 10, "123", "4567");
+	ret_p = dprintf(1, "29: %4.3s %-4.3s \n", "123", "4567");
+	dprintf(1, "33: %4.2s %-4.2s \n", "123", "4567");
 	dprintf(1, "##########ft_printf##########\n");
-	ft_printf("minus [%-2.10s][%-2.s][%-20.*s][%-20.2s]\n", "hello", "hello", -10, "hello", "hello");
-	ret_ft = ft_printf("[%*s]%20.10stesttest %s\n", 10, "hello", "hello", "quentin");
-	ft_printf("%.s", 42);*/
+	//ft_printf(" %*.0s %.2s ", 10, "123", "4567");
+	ret_ft = ft_printf("29: %4.3s %-4.3s \n", "123", "4567");
+	ft_printf("33: %4.2s %-4.2s \n", "123", "4567");*/
 	
 	/*					TEST ADRESS					*/
 	/*dprintf(1, "############printf###########\n");
-	ret_p = dprintf(1, "[%15p]\n",  str);
+	//ret_p = dprintf(1, " %p %p ", INT_MIN, INT_MAX);
 	dprintf(1, "##########ft_printf##########\n");
-	ret_ft = ft_printf("[%15p]\n", str);*/
+	ret_ft = ft_printf(" %p %p ", LONG_MIN, LONG_MAX);*/
 
 	/*					TEST INT					*/
-	dprintf(1, "############printf###########\n");
-	ret_p = dprintf(1, "none [%5.6d]\n",  -42);
+	/*dprintf(1, "############printf###########\n");
+	//ret_p = dprintf(1, "%09d\n", UINT_MAX + 1);
+	ret_p = dprintf(1, " %s  \n", NULL);
 	dprintf(1, "##########ft_printf##########\n");
-	ret_ft = ft_printf("none [%5.6d]\n", -42);
+	//ret_ft = ft_printf("%09d\n", UINT_MAX + 1);
+	ret_ft = ft_printf(" %s  \n", NULL);
+	
 	
 	dprintf(1, "#############ret#############\n");
 	dprintf(1, "ret_printf    = %d\n", ret_p);
 	dprintf(1, "ret_ft_printf = %d\n", ret_ft);
 	
-
 	return (0);
-}
+}*/

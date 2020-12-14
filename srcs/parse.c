@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/11 11:26:35 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 14:28:25 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void		ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 			arg->prec = ft_atoi(format + (*i));
 			while (format[*i] >= '0' && format[*i] <= '9')
 				(*i)++;
+			if (arg->prec == 0)
+				arg->prec = -1;
 		}
 		else
 			arg->prec = -1;
@@ -75,6 +77,11 @@ void		ft_parse_flags(char *format, int *i, t_flags *arg)
 	}
 	else
 		arg->minus = 0;
+	if (format[*i] == '0' && arg->zero == 0)
+	{
+		arg->zero = 1;
+		(*i)++;
+	}
 }
 
 void		ft_parse_format(char *format, va_list ap, t_flags *arg, int *index)

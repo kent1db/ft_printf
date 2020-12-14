@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int.c                                              :+:      :+:    :+:   */
+/*   hexa.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/11 15:34:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/14 15:15:29 by qurobert         ###   ########lyon.fr   */
+/*   Created: 2020/12/14 15:23:38 by qurobert          #+#    #+#             */
+/*   Updated: 2020/12/14 17:09:06 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void			ft_zero(int *ret, t_flags *arg)
 {
@@ -22,7 +21,7 @@ static void			ft_zero(int *ret, t_flags *arg)
 		(*ret) += ft_putc(' ', arg->width);
 }
 
-static	void	ft_put_int_minus(int *ret, long nb, t_flags *arg, int len, int signe)
+static void				ft_puthex_minus(int *ret, unsigned int nb, t_flags *arg, int len)
 {
 	int 		count_s;
 	int			count_z;
@@ -36,33 +35,29 @@ static	void	ft_put_int_minus(int *ret, long nb, t_flags *arg, int len, int signe
 	if (arg->prec < arg->width)
 	{
 		if (count_z == 0)
-			count_s = arg->width - len - signe;
+			count_s = arg->width - len;
 		else
-			count_s = arg->width - arg->prec - signe;
+			count_s = arg->width - arg->prec;
 	}
-	if (signe)
-		(*ret) += ft_putc('-', 1);
 	if (count_z > 0)
 		while (count_z--)
 			(*ret) += ft_putc('0', 1);
-	(*ret) += ft_putnb_pos(nb, arg);
+	(*ret) += ft_put_hexa(nb, arg);
 	if (count_s > 0)
 		while (count_s--)
 			(*ret) += ft_putc(' ', 1);
 }
 
-static void		ft_put_int_zero(int *ret, long nb, t_flags *arg, int len, int signe)
+static void		ft_puthex_zero(int *ret, unsigned int nb, t_flags *arg, int len)
 {
-	if (signe)
-		(*ret) += ft_putc('-', 1);
-	if (arg->width > len + signe)
+	if (arg->width > len)
 	{
-		(*ret) += ft_putc('0', arg->width - (len + signe));
+		(*ret) += ft_putc('0', arg->width - len);
 	}
-	(*ret) += ft_putnb_pos(nb, arg);
+	(*ret) += ft_put_hexa(nb, arg);
 }
 
-static void		ft_put_int_none(int *ret, long nb, t_flags *arg, int len, int signe)
+static void		ft_puthex_none(int *ret, unsigned int nb, t_flags *arg, int len)
 {
 	int 		count_s;
 	int			count_z;
@@ -76,41 +71,36 @@ static void		ft_put_int_none(int *ret, long nb, t_flags *arg, int len, int signe
 	if (arg->prec < arg->width)
 	{
 		if (count_z == 0)
-			count_s = arg->width - len - signe;
+			count_s = arg->width - len;
 		else
-			count_s = arg->width - arg->prec - signe;
+			count_s = arg->width - arg->prec;
 	}
 	if (count_s > 0)
 		while (count_s--)
 			(*ret) += ft_putc(' ', 1);
-	if (signe)
-		(*ret) += ft_putc('-', 1);
 	if (count_z > 0)
 		while (count_z--)
 			(*ret) += ft_putc('0', 1);
-	(*ret) += ft_putnb_pos(nb, arg);
+	(*ret) += ft_put_hexa(nb, arg);
 }
 
-void		ft_print_int(va_list ap, int *ret, t_flags *arg)
+void				ft_print_hexa(va_list ap, int *ret, t_flags *arg, char c)
 {
-	long	nb;
-	int		len;
-	int		signe;
+	unsigned int	nb;
+	int				len;
 	
-	signe = 0;
-	nb = (long)va_arg(ap, int);
-	if (nb < 0)
-	{
-		signe = 1;
-		nb = -nb;
-	}
-	len = ft_count_int(nb);
+	nb = va_arg(ap, unsigned int);
+	len = ft_count_hexa(nb);
+	if (c == 'X')
+		arg->hexa = 1;
+	else
+		arg->hexa = 0;
 	if (nb == 0 && arg->prec == -1)
 		ft_zero(ret, arg);
 	else if (arg->minus)
-		ft_put_int_minus(ret, nb, arg, len, signe);
+		ft_puthex_minus(ret, nb, arg, len);
 	else if (arg->zero && arg->prec == 0)
-		ft_put_int_zero(ret, nb, arg, len, signe);
+		ft_puthex_zero(ret, nb, arg, len);
 	else
-		ft_put_int_none(ret, nb, arg, len, signe);
+		ft_puthex_none(ret, nb, arg, len);
 }

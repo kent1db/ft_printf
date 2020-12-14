@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 14:09:24 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/11 18:02:09 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 14:32:53 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,21 @@ int			ft_putc(char c, int nb)
 	return (nb);
 }
 
-int			ft_putnb_pos(int nb)
+int			ft_putnb_pos(long nb, t_flags *arg)
 {
-	int		base_l;
+	long	base_l;
 	char	*base;
 
 	base = "0123456789";
 	base_l = 10;
+	if (arg->prec == -1 && nb == 0)
+		return (0);
 	if (nb >= base_l)
-		return (ft_putnb_pos(nb / base_l) + ft_putc(base[nb % base_l], 1));
+		return (ft_putnb_pos(nb / base_l, arg) + ft_putc(base[nb % base_l], 1));
 	return (ft_putc(base[nb % base_l], 1));
 }
 
-int				ft_count_int(int nb)
+int				ft_count_int(long nb)
 {
 	int count;
 

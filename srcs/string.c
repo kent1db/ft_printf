@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 11:04:04 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/11 15:38:41 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 18:07:52 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,11 @@ static void		ft_puts_minus(int *ret, char *str, t_flags *arg, int len)
 			(*ret)++;
 		}
 	}
-	if (arg->width > len)
+	while (i < (arg->width))
 	{
-		while (i < (arg->width))
-		{
-			ft_putchar_fd(' ', 1);
-			(*ret)++;
-			i++;
-		}
+		ft_putchar_fd(' ', 1);
+		(*ret)++;
+		i++;
 	}
 }
 
@@ -70,17 +67,36 @@ static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 	}
 }
 
+static	void	ft_puts_width(int *ret, t_flags *arg)
+{
+	int		count;
+
+	count = 0;
+	while (count < arg->width)
+	{
+		count++;
+		(*ret) += ft_putc(' ', 1);
+	}
+}
+
 void			ft_print_string(va_list ap, int *ret, t_flags *arg)
 {
 	char		*str;
 	int			len;
 	
 	str = va_arg(ap, char *);
-	len = ft_strlen(str);
+	if (str == NULL)
+		str = "(null)";
 	if (arg->prec == -1)
-		(*ret) += ft_putc(' ', arg->width);
+		ft_puts_width(ret, arg);
 	else if (arg->minus)
+	{
+		len = ft_strlen(str);
 		ft_puts_minus(ret, str, arg, len);
+	}
 	else
+	{
+		len = ft_strlen(str);
 		ft_puts_none(ret, str, arg, len);
+	}
 }
