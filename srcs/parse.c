@@ -6,14 +6,14 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/14 14:28:25 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:42:15 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-void		ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
+void	ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 {
 	if (format[*i] == '.')
 	{
@@ -39,7 +39,7 @@ void		ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 		arg->prec = 0;
 }
 
-void		ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
+void	ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
 {
 	if (format[*i] == '*')
 	{
@@ -58,10 +58,10 @@ void		ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
 			(*i)++;
 	}
 	else
-		arg->width = 0;	
+		arg->width = 0;
 }
 
-void		ft_parse_flags(char *format, int *i, t_flags *arg)
+void	ft_parse_flags(char *format, int *i, t_flags *arg)
 {
 	if (format[*i] == '0')
 	{
@@ -84,12 +84,10 @@ void		ft_parse_flags(char *format, int *i, t_flags *arg)
 	}
 }
 
-void		ft_parse_format(char *format, va_list ap, t_flags *arg, int *index)
+void	ft_parse_format(char *format, va_list ap, t_flags *arg, int *index)
 {
-	arg->start = (*index);
 	(*index)++;
 	ft_parse_flags(format, index, arg);
 	ft_parse_width(format, ap, index, arg);
 	ft_parse_prec(format, ap, index, arg);
-	arg->end = (*index);
 }

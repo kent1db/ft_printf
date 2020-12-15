@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 12:02:39 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/14 16:04:24 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:10:17 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int				ft_count_hexa_ll(unsigned long long nb)
 	return (1);
 }
 
-static void				ft_putadd_minus(int *ret, t_flags *arg, unsigned long long adress)
+static void				ft_putadd_minus(int *ret, t_flags *arg,
+						unsigned long long adress)
 {
 	int					count;
 
@@ -50,7 +51,8 @@ static void				ft_putadd_minus(int *ret, t_flags *arg, unsigned long long adress
 	(*ret) += count;
 }
 
-static void				ft_putadd_none(int *ret, t_flags *arg, unsigned long long adress)
+static void				ft_putadd_none(int *ret, t_flags *arg,
+						unsigned long long adress)
 {
 	int					count;
 

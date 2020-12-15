@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 11:04:04 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/14 18:07:52 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:11:19 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void		ft_puts_minus(int *ret, char *str, t_flags *arg, int len)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	if (arg->prec == 0)
@@ -41,8 +41,8 @@ static void		ft_puts_minus(int *ret, char *str, t_flags *arg, int len)
 
 static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 {
-	int		count;
-	int 	i;
+	int			count;
+	int			i;
 
 	i = 0;
 	if (arg->prec >= len || arg->prec == 0)
@@ -60,7 +60,7 @@ static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 		(*ret) += ft_puts(str);
 		i = len;
 	}
-	while((i < (arg->prec)) && str[i])
+	while ((i < (arg->prec)) && str[i])
 	{
 		ft_putchar_fd(str[i++], 1);
 		(*ret)++;
@@ -69,7 +69,7 @@ static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 
 static	void	ft_puts_width(int *ret, t_flags *arg)
 {
-	int		count;
+	int			count;
 
 	count = 0;
 	while (count < arg->width)
@@ -83,7 +83,7 @@ void			ft_print_string(va_list ap, int *ret, t_flags *arg)
 {
 	char		*str;
 	int			len;
-	
+
 	str = va_arg(ap, char *);
 	if (str == NULL)
 		str = "(null)";

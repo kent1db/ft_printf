@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 15:23:38 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/14 17:09:06 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:17:19 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 static void			ft_zero(int *ret, t_flags *arg)
 {
-	int					count;
+	int				count;
 
 	count = 0;
 	if (arg->width)
 		(*ret) += ft_putc(' ', arg->width);
 }
 
-static void				ft_puthex_minus(int *ret, unsigned int nb, t_flags *arg, int len)
+static void			ft_puthex_minus(int *ret, unsigned int nb,
+					t_flags *arg, int len)
 {
-	int 		count_s;
-	int			count_z;
-	
+	int				count_s;
+	int				count_z;
+
 	if (arg->prec > len)
 		count_z = arg->prec - len;
- 	if (arg->prec <= len)
+	if (arg->prec <= len)
 		count_z = 0;
 	if (arg->prec >= arg->width)
 		count_s = 0;
@@ -48,7 +49,8 @@ static void				ft_puthex_minus(int *ret, unsigned int nb, t_flags *arg, int len)
 			(*ret) += ft_putc(' ', 1);
 }
 
-static void		ft_puthex_zero(int *ret, unsigned int nb, t_flags *arg, int len)
+static void			ft_puthex_zero(int *ret, unsigned int nb,
+					t_flags *arg, int len)
 {
 	if (arg->width > len)
 	{
@@ -57,14 +59,15 @@ static void		ft_puthex_zero(int *ret, unsigned int nb, t_flags *arg, int len)
 	(*ret) += ft_put_hexa(nb, arg);
 }
 
-static void		ft_puthex_none(int *ret, unsigned int nb, t_flags *arg, int len)
+static void			ft_puthex_none(int *ret, unsigned int nb,
+					t_flags *arg, int len)
 {
-	int 		count_s;
-	int			count_z;
-	
+	int				count_s;
+	int				count_z;
+
 	if (arg->prec > len)
 		count_z = arg->prec - len;
- 	if (arg->prec <= len)
+	if (arg->prec <= len)
 		count_z = 0;
 	if (arg->prec >= arg->width)
 		count_s = 0;
@@ -84,11 +87,12 @@ static void		ft_puthex_none(int *ret, unsigned int nb, t_flags *arg, int len)
 	(*ret) += ft_put_hexa(nb, arg);
 }
 
-void				ft_print_hexa(va_list ap, int *ret, t_flags *arg, char c)
+void				ft_print_hexa(va_list ap, int *ret,
+					t_flags *arg, char c)
 {
 	unsigned int	nb;
 	int				len;
-	
+
 	nb = va_arg(ap, unsigned int);
 	len = ft_count_hexa(nb);
 	if (c == 'X')

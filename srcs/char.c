@@ -6,13 +6,13 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 17:15:56 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/10 10:55:50 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:51:07 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_putc_minus(int *ret, t_flags *arg, char c)
+static void	ft_putc_minus(int *ret, t_flags *arg, char c)
 {
 	int		count;
 
@@ -27,7 +27,7 @@ void		ft_putc_minus(int *ret, t_flags *arg, char c)
 	}
 }
 
-void		ft_putc_none(int *ret, t_flags *arg, char c)
+static void	ft_putc_none(int *ret, t_flags *arg, char c)
 {
 	int		count;
 

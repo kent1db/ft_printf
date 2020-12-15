@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 14:09:24 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/14 14:32:53 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:13:51 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			ft_get_percent(char *format)
 
 int			ft_puts(char *str)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -38,7 +38,7 @@ int			ft_puts(char *str)
 
 int			ft_putc(char c, int nb)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (i < nb)
@@ -63,15 +63,15 @@ int			ft_putnb_pos(long nb, t_flags *arg)
 	return (ft_putc(base[nb % base_l], 1));
 }
 
-int				ft_count_int(long nb)
+int			ft_count_int(long nb)
 {
-	int count;
+	int		count;
 
 	count = 1;
 	while (nb > 9)
 	{
 		nb = nb / 10;
-		count++;	
+		count++;
 	}
 	return (count);
 }
