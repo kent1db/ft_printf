@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:11:52 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/15 10:13:59 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 13:54:58 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@ void		ft_putp_minus(int *ret, t_flags *arg)
 {
 	int		count;
 
-	count = 1;
-	(*ret) += ft_putc('%', 1);
+	count = ft_putc('%', 1);
 	while (count < (arg->width))
 	{
 		ft_putchar_fd(' ', 1);
 		count++;
-		(*ret)++;
 	}
-	(*ret) = count;
+	(*ret) += count;
 }
 
 void		ft_putp_none(int *ret, t_flags *arg)
@@ -36,9 +34,9 @@ void		ft_putp_none(int *ret, t_flags *arg)
 	{
 		ft_putchar_fd(' ', 1);
 		count++;
-		(*ret)++;
 	}
-	(*ret) += ft_putc('%', 1);
+	ft_putc('%', 1);
+	(*ret) += count;
 }
 
 void		ft_putp_zero(int *ret, t_flags *arg)
@@ -50,9 +48,9 @@ void		ft_putp_zero(int *ret, t_flags *arg)
 	{
 		ft_putchar_fd('0', 1);
 		count++;
-		(*ret)++;
 	}
-	(*ret) += ft_putc('%', 1);
+	ft_putc('%', 1);
+	(*ret) += count;
 }
 
 void		ft_print_percent(int *ret, t_flags *arg)

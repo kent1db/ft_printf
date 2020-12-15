@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 12:02:39 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/15 10:10:17 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 12:54:53 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ void					ft_print_adress(va_list ap, int *ret, t_flags *arg)
 	unsigned long long	adress;
 
 	adress = (unsigned long long)va_arg(ap, char *);
-	if (arg->minus)
+	if (adress == 0 && arg->prec == -1)
+		(*ret) += ft_puts("0x");
+	else if (arg->minus)
 		ft_putadd_minus(ret, arg, adress);
 	else
 		ft_putadd_none(ret, arg, adress);
