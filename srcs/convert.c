@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 16:00:40 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/14 17:10:20 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 14:14:54 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int					ft_put_hexa(unsigned int nb, t_flags *arg)
 int					ft_count_hexa(unsigned int nb)
 {
 	unsigned int	base_l;
-	char			*base;
 
 	base_l = 16;
 	if (nb >= base_l)
