@@ -6,7 +6,7 @@
 #    By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/07 15:50:54 by qurobert          #+#    #+#              #
-#    Updated: 2020/12/15 14:12:01 by qurobert         ###   ########lyon.fr    #
+#    Updated: 2020/12/15 14:13:12 by qurobert         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ SRC = 		$(addprefix ${SRC_PATH},${FILES})
 CC = 		gcc
 OBJ = 		${SRC:.c=.o}
 FLAGS = 	-Wall -Wextra -Werror
-LIB =		make -C ./Libft
 
 .PHONY: all clean fclean re libftprintf.a
 
