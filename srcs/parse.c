@@ -6,12 +6,11 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 21:15:17 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/15 13:55:19 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 13:10:09 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	ft_parse_prec(char *format, va_list ap, int *i, t_flags *arg)
 {
@@ -54,7 +53,7 @@ void	ft_parse_width(char *format, va_list ap, int *i, t_flags *arg)
 	else if (format[*i] >= '1' && format[*i] <= '9')
 	{
 		arg->width = ft_atoi(format + (*i));
-		while (format[*i] >= '0' && format[*i] <= '9')
+		while (format[*i] >= '0' && format[*i] <= '9' && format[*i] != '\0')
 			(*i)++;
 	}
 	else

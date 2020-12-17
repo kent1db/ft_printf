@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:53 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/15 11:01:18 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 14:01:35 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "../Libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 # include "struct.h"
 
 int		ft_printf(const char *format, ...)
@@ -42,5 +42,7 @@ int		ft_putnb_pos(long nb, t_flags *arg);
 int		ft_count_int(long nb);
 int		ft_put_hexa(unsigned int nb, t_flags *arg);
 int		ft_count_hexa(unsigned int nb);
+int		ft_put_hexa_ll(unsigned long long nb);
+int		ft_count_hexa_ll(unsigned long long nb);
 
 #endif

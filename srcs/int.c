@@ -6,12 +6,11 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 15:34:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/15 10:22:51 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 17:07:58 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void		ft_zero(int *ret, t_flags *arg)
 {

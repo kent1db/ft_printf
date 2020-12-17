@@ -6,12 +6,11 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 11:04:04 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/15 10:11:19 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 17:47:54 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void		ft_puts_minus(int *ret, char *str, t_flags *arg, int len)
 {
@@ -51,7 +50,7 @@ static void		ft_puts_none(int *ret, char *str, t_flags *arg, int len)
 		count = arg->width - arg->prec;
 	while (count > 0)
 	{
-		ft_putchar_fd(' ', 1);
+		ft_putchar_fd(arg->to_print, 1);
 		count--;
 		(*ret)++;
 	}
@@ -75,7 +74,7 @@ static	void	ft_puts_width(int *ret, t_flags *arg)
 	while (count < arg->width)
 	{
 		count++;
-		(*ret) += ft_putc(' ', 1);
+		(*ret) += ft_putc(arg->to_print, 1);
 	}
 }
 
@@ -87,6 +86,10 @@ void			ft_print_string(va_list ap, int *ret, t_flags *arg)
 	str = va_arg(ap, char *);
 	if (str == NULL)
 		str = "(null)";
+	if (arg->zero && !(arg->minus))
+		arg->to_print = '0';
+	else
+		arg->to_print = ' ';
 	if (arg->prec == -1)
 		ft_puts_width(ret, arg);
 	else if (arg->minus)

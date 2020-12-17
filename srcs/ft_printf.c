@@ -6,7 +6,7 @@
 /*   By: qurobert <qurobert@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:56:41 by qurobert          #+#    #+#             */
-/*   Updated: 2020/12/15 11:59:38 by qurobert         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 14:25:34 by qurobert         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void		ft_select(char conv, va_list ap, int *ret, t_flags *arg)
 
 static void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 {
-	int i;
+	int			i;
 
-	i = -1;
-	while (format[++i])
+	i = 0;
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
@@ -47,6 +47,8 @@ static void		ft_print(char *format, va_list ap, int *ret, t_flags *arg)
 			write(1, &(format[i]), 1);
 			(*ret)++;
 		}
+		if (format[i])
+			i++;
 	}
 }
 
